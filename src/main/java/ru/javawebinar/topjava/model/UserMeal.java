@@ -19,9 +19,7 @@ public class UserMeal {
         this.calories = calories;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
-    }
+    public LocalDateTime getDateTime() {return dateTime;}
 
     public String getDescription() {
         return description;
