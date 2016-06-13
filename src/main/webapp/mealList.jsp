@@ -21,6 +21,7 @@
 <body>
 <h2><a href="index.html">Home</a></h2>
 <h2>Meal list</h2>
+<a href="meals?action=create">Add Meal</a>>
 <%--<c:set var="mealList" value="${mealList}"/>--%>
 <table border=1>
     <tr>
@@ -42,8 +43,8 @@
             <fmt:formatDate pattern="dd.MM.yyyy HH:mm" value="${ parsedDateTime }" /></td>
         <td>${meal.calories}</td>
         <td>${meal.exceed}</td>
-            <td><a href="UserController?action=edit&userId=<c:out value="${user.userid}"/>">Update</a></td>
-            <td><a href="UserController?action=delete&userId=<c:out value="${user.userid}"/>">Delete</a></td>
+            <td><a href="meals?action=update&id=${meal.id}">Update</a></td>
+            <td><a href="meals?action=delete&id=${meal.id}">Delete</a></td>
 
         <%--<td><a href="<c:url value='/delete-${meal.id}-employee' />">delete</a></td>--%>
     </tr>
