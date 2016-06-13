@@ -13,26 +13,29 @@
 <html>
 <head>
     <title>Meal list</title>
-
+<style>
+    .normal {color:green;}
+    .exceeded {color:red;}
+    </style>
 </head>
 <body>
 <h2><a href="index.html">Home</a></h2>
 <h2>Meal list</h2>
 <%--<c:set var="mealList" value="${mealList}"/>--%>
-
-
 <table border=1>
     <tr>
         <td>Description</td><td>DateTime</td><td>Calories</td><td>Exceeded?</td><th colspan=2>Action</th>
     </tr>
         <c:forEach items="${mealList}" var="meal">
-        <%--<td><a href="<c:url value='/edit-${meal.id}-employee' />">${employee.id}</a></td>--%>
-            <c:if test="${meal.isExceed() eq true}">
-                <tr style="color: red">
-            </c:if>
-            <c:if test="${meal.isExceed() eq false}">
-                <tr style="color: green">
-            </c:if>
+        <jsp:useBean id="meal" scope="page" type="ru.javawebinar.topjava.model.UserMealWithExceed"/>
+            <%--<c:if test="${meal.isExceed() eq true}">--%>
+                <%--<tr style="color: red">--%>
+            <%--</c:if>--%>
+            <%--<c:if test="${meal.isExceed() eq false}">--%>
+                <%--<tr style="color: green">--%>
+            <%--</c:if>--%>
+
+ <tr class="${meal.exceed?'exceeded':'normal'}">
         <td>${meal.description}</td>
          <td>   <c:set var="cleanedDateTime" value="${fn:replace(meal.dateTime, 'T', ' ')}" />
             <fmt:parseDate value="${ cleanedDateTime }" pattern="yyyy-MM-dd HH:mm" var="parsedDateTime" type="both" />

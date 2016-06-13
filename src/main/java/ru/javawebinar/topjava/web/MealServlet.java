@@ -21,14 +21,13 @@ import static org.slf4j.LoggerFactory.getLogger;
  * Date: 19.08.2014
  */
 public class MealServlet extends HttpServlet {
-    private static final Logger LOG = getLogger(UserServlet.class);
+    private static final Logger LOG = getLogger(MealServlet.class);
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        LOG.debug("redirect to mealList");
+        LOG.info("get All");
         response.setContentType("text/html;charset=utf-8");
 
-        List<UserMealWithExceed> filteredMealsWithExceeded = UserMealsUtil.getFilteredWithExceeded(UserMealsUtil.getMealList(), LocalTime.MIN, LocalTime.MAX, 2000);
-        request.setAttribute("mealList",filteredMealsWithExceeded);
+        request.setAttribute("mealList",UserMealsUtil.getWithExceeded(UserMealsUtil.MEAL_LIST,2000));
         request.getRequestDispatcher("/mealList.jsp").forward(request, response);
 //        response.sendRedirect("mealList.jsp");
     }
